@@ -6,9 +6,24 @@
 body{
     height: 100vh;
     background: linear-gradient(#009688 15%, #D8DBD5, #D8DBD5 10%);
+    display: flex;
 }
 .bk{
     background-color: white;
     height: 90vh;
     width: 150vh;
+}
+header{
+    background-color: #EAEAEA;
+    height: 12vh;
+}
+.profile-pic{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.user-option{
+    display: flex;
+    align-items: center;
+    color: grey;
 }
