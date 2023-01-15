@@ -4,6 +4,7 @@ const app = Vue.createApp({
   data() {
     return {
       currentIndex: 0,
+      newMessage:'',
       user: {
         name: 'Nome Utente',
         avatar: '_io'
@@ -105,8 +106,11 @@ const app = Vue.createApp({
     },
     setCurrentIndex(index){
       this.currentIndex = index;
+    },
+    createMessage(){
+      const myMessage={date:'15/01/2023 22:30:12',text:this.newMessage,status:'sent'};
+      this.currentChat.push(myMessage);
     }
-
   }
 });
 
