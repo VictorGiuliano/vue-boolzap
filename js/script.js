@@ -4,14 +4,16 @@ const dt = luxon.DateTime;
 const app = Vue.createApp({
   data() {
     return {
-      currentIndex: 0,
+      currentIndex: 1,
       newMessage:'',
+      searchName:'',
       user: {
         name: 'Nome Utente',
         avatar: '_io'
       },
       contacts: [
         {
+          id:1,
           name: 'Michele',
           avatar: '_1',
           visible: true,
@@ -33,6 +35,7 @@ const app = Vue.createApp({
           ],
         },
         {
+          id:2,
           name: 'Fabio',
           avatar: '_2',
           visible: true,
@@ -54,6 +57,7 @@ const app = Vue.createApp({
           ],
         },
         {
+          id:3,
           name: 'Samuele',
           avatar: '_3',
           visible: true,
@@ -75,6 +79,7 @@ const app = Vue.createApp({
           ],
         },
         {
+          id:4,
           name: 'Luisa',
           avatar: '_4',
           visible: true,
@@ -90,16 +95,25 @@ const app = Vue.createApp({
           }
           ],
         },
-      ]
+      ],
     }
   },
   computed:{
+   
     currentContact(){
-      return  this.contacts[this.currentIndex];
+      console.log(this.contacts.filter((contact) => contact.id==this.currentIndex));
+      return  this.contacts.filter((contact) => contact.id==this.currentIndex)[0];
     },
     currentChat(){
       return this.currentContact.messages;  
     },
+    filteredName(){
+      this.searchName = this.searchName.toLowerCase();
+      if(!this.searchName){
+       return this.contacts; 
+      }
+       return this.contacts.filter((contact) => contact.name.toLowerCase().includes(this.searchName));
+    }
     
   },
   methods: {
@@ -121,7 +135,8 @@ const app = Vue.createApp({
         const botMessage={date:this.getCurrentTime(),text:'ok',status:'received'};
         this.currentChat.push(botMessage);
       },1000)
-    },
+    }, 
+    
     
   }
 });
