@@ -116,6 +116,11 @@ const app = Vue.createApp({
       const myMessage={date:this.getCurrentTime(),text:this.newMessage,status:'sent'};
       this.currentChat.push(myMessage);
       this.newMessage = '';
+
+      setTimeout(() => {
+        const botMessage={date:this.getCurrentTime(),text:'ok',status:'received'};
+        this.currentChat.push(botMessage);
+      },1000)
     },
     
   }
