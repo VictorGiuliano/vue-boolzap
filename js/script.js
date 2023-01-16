@@ -98,6 +98,10 @@ const app = Vue.createApp({
     },
     currentChat(){
       return this.currentContact.messages;  
+    },
+    okMessage(){
+      const defaultMessage = {date:'15/01/2023 23:30:14',text:'ok',status:'received'};
+      this.currentChat.push(this.defaultMessage);
     }
   },
   methods: {
@@ -110,7 +114,9 @@ const app = Vue.createApp({
     createMessage(){
       const myMessage={date:'15/01/2023 22:30:12',text:this.newMessage,status:'sent'};
       this.currentChat.push(myMessage);
-    }
+      this.newMessage = '';
+    },
+    
   }
 });
 
