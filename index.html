@@ -19,6 +19,9 @@
 
   <!-- Style -->
   <link rel="stylesheet" href="style.css" />
+  
+  <!-- Luxon -->
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3.2.1/build/global/luxon.min.js"></script>
 
   <!-- VueJS -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -111,10 +114,10 @@
           <!-- Chat Messages -->
           <div class="flex-grow-1 overflow-auto bg-chat-image">
             <ul class="px-3">
-              <li v-for="(message) in currentChat" class="message-container p-3" v-bind:class="(message.status=='sent')?'sent':'received'">
+              <li v-for="(message) in currentChat" class="message-container p-3" v-bind:class="(message.status)">
                 <div class="message p-2 rounded-3">
                   <p>{{ message.text }}</p>
-                  <time datetime="2021-08-03T09:53">31/01/2022 - 12:13</time>
+                  <time datetime="2021-08-03T09:53"> {{message.date}} </time>
                 </div>
               </li>
             </ul>

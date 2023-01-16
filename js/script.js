@@ -1,4 +1,5 @@
 console.log('Vue OK', Vue);
+const dt = luxon.DateTime;
 
 const app = Vue.createApp({
   data() {
@@ -99,10 +100,7 @@ const app = Vue.createApp({
     currentChat(){
       return this.currentContact.messages;  
     },
-    okMessage(){
-      const defaultMessage = {date:'15/01/2023 23:30:14',text:'ok',status:'received'};
-      this.currentChat.push(this.defaultMessage);
-    }
+    
   },
   methods: {
     buildAvatarUrl(avatar){
@@ -111,8 +109,11 @@ const app = Vue.createApp({
     setCurrentIndex(index){
       this.currentIndex = index;
     },
+    getCurrentTime(){
+      return dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
+    },
     createMessage(){
-      const myMessage={date:'15/01/2023 22:30:12',text:this.newMessage,status:'sent'};
+      const myMessage={date:this.getCurrentTime(),text:this.newMessage,status:'sent'};
       this.currentChat.push(myMessage);
       this.newMessage = '';
     },
